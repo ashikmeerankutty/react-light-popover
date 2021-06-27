@@ -1,6 +1,16 @@
 # React Light Popover
 
-A lightweight, zero dependancy popover component for React
+A lightweight weight (1kb), zero dependancy popover component for React
+
+## Examples
+
+See demo [here](https://codesandbox.io/s/react-light-popover-demo-reze2)
+
+### Install
+
+```bash
+npm i react-light-popover
+```
 
 ### Features
 
@@ -9,9 +19,9 @@ A lightweight, zero dependancy popover component for React
 - Supports align center (default), start, end
 - Persist on scroll
 - Switch direction on boundary violation with window
-- Typescript
 
 ### TODO
 
+- Convert to typescript
 - Better website for demo
 - Documentation
