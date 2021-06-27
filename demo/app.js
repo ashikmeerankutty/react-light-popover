@@ -17,10 +17,8 @@ export default function App() {
       >
         <div
           style={{
-            display: 'grid',
-            height: '300px',
+            display: 'flex',
             width: '100%',
-            placeItems: 'center',
           }}
         >
           <Popover
@@ -29,11 +27,9 @@ export default function App() {
             align={align}
             content={<div>Hello</div>}
           >
-            <div>
-              <button type="button" onClick={() => setShow(!show)}>
-                Show popover
-              </button>
-            </div>
+            <button type="button" onClick={() => setShow(!show)}>
+              Show popover
+            </button>
           </Popover>
         </div>
       </div>
