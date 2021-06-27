@@ -9,9 +9,9 @@ A lightweight, zero dependancy popover component for React
 - Supports align center (default), start, end
 - Persist on scroll
 - Switch direction on boundary violation with window
+- Typescript
 
 ### TODO
 
-- Convert to typescript
 - Better website for demo
 - Documentation
