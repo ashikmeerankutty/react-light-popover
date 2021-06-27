@@ -23,7 +23,7 @@ export default function App() {
         >
           <Popover
             show={show}
-            position={position}
+            positions={[position, 'bottom']}
             align={align}
             content={<div>Hello</div>}
           >
