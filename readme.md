@@ -13,3 +13,5 @@ A lightweight, zero dependancy popover component for React
 ### TODO
 
 - Convert to typescript
+- Better website for demo
+- Documentation
