@@ -1,6 +1,12 @@
+import { PopoverAlign, PopoverPosition, Rect } from "./types";
+
 const boundaryInset = 10;
 
-const exceedsBoundary = (parent, currentRect, position) => {
+const exceedsBoundary = (
+  parent: HTMLElement,
+  currentRect: Rect,
+  position: PopoverPosition
+) => {
   const {
     top: parentTop,
     left: parentLeft,
@@ -8,14 +14,19 @@ const exceedsBoundary = (parent, currentRect, position) => {
     bottom: parentBottom,
   } = parent.getBoundingClientRect();
   return (
-    (position === 'top' && currentRect.top < parentTop + boundaryInset) ||
-    (position === 'left' && currentRect.left < parentLeft + boundaryInset) ||
-    (position === 'right' && currentRect.right > parentRight - boundaryInset) ||
-    (position === 'bottom' && currentRect.bottom > parentBottom - boundaryInset)
+    (position === "top" && currentRect.top < parentTop + boundaryInset) ||
+    (position === "left" && currentRect.left < parentLeft + boundaryInset) ||
+    (position === "right" && currentRect.right > parentRight - boundaryInset) ||
+    (position === "bottom" && currentRect.bottom > parentBottom - boundaryInset)
   );
 };
 
-const getPopoverRectForPosition = (target, content, position, align) => {
+const getPopoverRectForPosition = (
+  target: HTMLElement,
+  content: HTMLElement,
+  position: string,
+  align: string
+): Rect => {
   const {
     left: targetLeft,
     right: targetRight,
@@ -30,47 +41,47 @@ const getPopoverRectForPosition = (target, content, position, align) => {
 
   const { width, height } = content.getBoundingClientRect();
 
-  let top;
-  let left;
+  let top = 0;
+  let left = 0;
 
   switch (position) {
-    case 'top':
+    case "top":
       top = targetTop - height;
       left = targetMidX - width / 2;
-      if (align === 'start') {
+      if (align === "start") {
         left = targetLeft;
       }
-      if (align === 'end') {
+      if (align === "end") {
         left = targetRight - width;
       }
       break;
-    case 'left':
+    case "left":
       top = targetMidY - height / 2;
       left = targetLeft - width;
-      if (align === 'start') {
+      if (align === "start") {
         top = targetTop;
       }
-      if (align === 'end') {
+      if (align === "end") {
         top = targetBottom - height;
       }
       break;
-    case 'bottom':
+    case "bottom":
       top = targetBottom;
       left = targetMidX - width / 2;
-      if (align === 'start') {
+      if (align === "start") {
         left = targetLeft;
       }
-      if (align === 'end') {
+      if (align === "end") {
         left = targetRight - width;
       }
       break;
-    case 'right':
+    case "right":
       top = targetMidY - height / 2;
       left = targetRight;
-      if (align === 'start') {
+      if (align === "start") {
         top = targetTop;
       }
-      if (align === 'end') {
+      if (align === "end") {
         top = targetBottom - height;
       }
       break;
@@ -89,11 +100,14 @@ const getPopoverRectForPosition = (target, content, position, align) => {
 };
 
 export const getPopoverRect = (
-  targetElement,
-  contentElement,
-  position,
-  align
-) => {
+  targetElement: HTMLElement,
+  contentElement: HTMLElement,
+  position: PopoverPosition,
+  align: PopoverAlign
+): {
+  violatesBoundary: boolean;
+  rect: Rect;
+} => {
   const rect = getPopoverRectForPosition(
     targetElement,
     contentElement,
@@ -109,5 +123,5 @@ export const getPopoverRect = (
   };
 };
 
-export const isStylesEqual = (updated, current) =>
+export const isStylesEqual = (updated: Rect, current: Partial<Rect>): boolean =>
   !Object.keys(updated).some((key) => updated[key] !== current[key]);

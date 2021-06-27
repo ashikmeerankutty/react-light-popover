@@ -1,13 +1,25 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { getPopoverRect, isStylesEqual } from './utils';
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { PopoverAlign, PopoverPosition } from "./types";
+import { getPopoverRect, isStylesEqual } from "./utils";
 
-export const usePopover = (target, content, positions, align) => {
+type PopoverState = {
+  position: string;
+  top: string | number;
+  left: string | number;
+};
+
+export const usePopover = (
+  target: HTMLElement | undefined,
+  content: HTMLElement | undefined,
+  positions: PopoverPosition[],
+  align: PopoverAlign
+): { styles: PopoverState } => {
   const prevStyles = useRef({
     left: 0,
     top: 0,
   });
-  const [styles, setStyles] = useState({
-    position: 'fixed',
+  const [styles, setStyles] = useState<PopoverState>({
+    position: "fixed",
     left: 0,
     top: 0,
   });
@@ -17,13 +29,12 @@ export const usePopover = (target, content, positions, align) => {
   useLayoutEffect(() => {
     let shouldUpdatePopover = true;
     const updatePosition = () => {
-      if (content) {
+      if (content && target) {
         const { rect: updatedStyles, violatesBoundary } = getPopoverRect(
           target,
           content,
           positions[positionIndex],
-          align,
-          setPositionIndex
+          align
         );
         if (!isStylesEqual(updatedStyles, prevStyles.current)) {
           prevStyles.current = updatedStyles;

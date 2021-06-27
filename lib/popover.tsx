@@ -1,16 +1,18 @@
-import { cloneElement, useRef, useState } from 'react';
-import { usePopover } from './hook';
-import Portal from './portal';
+import React, { cloneElement, useRef, useState } from "react";
 
-export const Popover = ({
+import { usePopover } from "./hook";
+import Portal from "./portal";
+import { PopoverProps } from "./types";
+
+export const Popover: React.FC<PopoverProps> = ({
   show,
   content,
   children,
-  positions = ['left', 'bottom'],
+  positions = ["bottom"],
   align,
 }) => {
-  const targetRef = useRef();
-  const [contentRef, setContentRef] = useState(null);
+  const targetRef = useRef<HTMLElement>();
+  const [contentRef, setContentRef] = useState<HTMLElement>();
 
   const { styles } = usePopover(
     targetRef.current,
@@ -31,7 +33,7 @@ export const Popover = ({
     return (
       <Portal>
         {cloneElement(content, {
-          ref: (ref) => setContentRef(ref),
+          ref: (ref: HTMLElement) => setContentRef(ref),
           style: { ...styles },
         })}
       </Portal>
@@ -45,5 +47,3 @@ export const Popover = ({
     </>
   );
 };
-
-export default Popover;
