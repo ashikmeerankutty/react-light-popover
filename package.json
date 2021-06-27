@@ -1,6 +1,6 @@
 {
   "name": "react-light-popover",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A lightweight popover for react",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -49,9 +49,9 @@
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+  "peerDependencies": {
+    "react": "^16.0.0 || ^17.0.0",
+    "react-dom": "^16.0.0 || ^17.0.0"
   },
   "files": [
     "dist/**/*"
