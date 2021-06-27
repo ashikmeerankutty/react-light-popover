@@ -10,24 +10,32 @@ export default function App() {
     <div className="App">
       <div
         style={{
-          display: 'grid',
-          height: '300px',
           width: '100%',
-          placeItems: 'center',
+          height: '200px',
+          overflow: 'scroll',
         }}
       >
-        <Popover
-          show={show}
-          position={position}
-          align={align}
-          content={<div>Hello</div>}
+        <div
+          style={{
+            display: 'grid',
+            height: '300px',
+            width: '100%',
+            placeItems: 'center',
+          }}
         >
-          <div>
-            <button type="button" onClick={() => setShow(!show)}>
-              Show popover
-            </button>
-          </div>
-        </Popover>
+          <Popover
+            show={show}
+            position={position}
+            align={align}
+            content={<div>Hello</div>}
+          >
+            <div>
+              <button type="button" onClick={() => setShow(!show)}>
+                Show popover
+              </button>
+            </div>
+          </Popover>
+        </div>
       </div>
       <div
         style={{
