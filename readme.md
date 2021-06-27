@@ -8,4 +8,4 @@ A lightweight, zero dependancy popover component for React
 - [x] Supports positions left, right, top, bottom
 - [x] Supports align center (default), start, end
 - [x] Persist on scroll
-- [ ] Switch direction on boundary violation
+- [x] Switch direction on boundary violation
