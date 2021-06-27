@@ -7,5 +7,5 @@ A lightweight, zero dependancy popover component for React
 - [x] Render popover inside a portal
 - [x] Supports positions left, right, top, bottom
 - [x] Supports align center (default), start, end
-- [ ] Persist on scroll
+- [x] Persist on scroll
 - [ ] Switch direction on boundary violation
