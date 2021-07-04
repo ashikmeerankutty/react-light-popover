@@ -59,7 +59,7 @@ function App() {
 ## Props
 | Prop  | Type | Description |
 | ------------- | ------------- | ------------- |
-| Show  | boolean  | Show or hide popover.  |
+| show  | boolean  | Show or hide popover.  |
 | positions  | string[]  | Determines the positions in which the popover appear. Possible values left, right, top or bottom. By default popover appears on the first position in the array if there is a boundary violation with window it takes the next position if available. |
 | align  | string  | Determines the alignment of the content, Possible values are start, end and center. By default it will be center. |
 | content  | ReactElement  | Content to be rendered inside the popover. |
