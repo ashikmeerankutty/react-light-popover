@@ -1,6 +1,6 @@
 {
   "name": "react-light-popover",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A lightweight popover for react",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -12,7 +12,7 @@
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "build:esm": "tsc --module esnext --outDir dist/esm",
     "build": "npm run build:cjs && npm run build:esm",
-    "build-demo": "npm run build && webpack --mode production",
+    "build-demo": "webpack --mode production",
     "lint": "eslint \"{lib,demo}/**\" --ext .ts,.tsx --max-warnings 0 --fix"
   },
   "repository": {
