@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Popover, PopoverAlign, PopoverPosition } from "../lib";
+import { Popover, PopoverAlign, PopoverPosition } from "../dist/esm";
 import "./styles.css";
 
 const App: React.FC = () => {
