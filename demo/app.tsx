@@ -6,6 +6,7 @@ const App: React.FC = () => {
   const [show, setShow] = useState<boolean>(false);
   const [position, setPosition] = useState<PopoverPosition>("bottom");
   const [align, setAlign] = useState<PopoverAlign>("center");
+  const [onBodyClosable, setOnBodyClosable] = useState<boolean>(false);
 
   return (
     <div className="app">
@@ -17,7 +18,7 @@ const App: React.FC = () => {
           align={align}
           offset={10}
           content={<div className="content__styles">Hello</div>}
-          onClose={() => setShow(false)}
+          onClose={() => onBodyClosable && setShow(false)}
         >
           <button type="button" onClick={() => setShow(!show)}>
             Show popover
@@ -46,6 +47,17 @@ const App: React.FC = () => {
         <button type="button" onClick={() => setAlign("center")}>
           Center
         </button>
+      </div>
+      <div
+        onClick={() => setOnBodyClosable(!onBodyClosable)}
+        className="data__checkbox"
+      >
+        <input
+          checked={onBodyClosable}
+          onChange={() => setOnBodyClosable(!onBodyClosable)}
+          type="checkbox"
+        ></input>
+        <p>Close on body click</p>
       </div>
     </div>
   );
