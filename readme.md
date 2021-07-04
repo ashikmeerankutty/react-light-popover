@@ -22,6 +22,4 @@ npm i react-light-popover
 
 ### TODO
 
-- Convert to typescript
-- Better website for demo
 - Documentation
