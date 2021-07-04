@@ -3,6 +3,7 @@ import React, { cloneElement, useRef, useState } from "react";
 import { usePopover } from "./hook";
 import Portal from "./portal";
 import { PopoverProps } from "./types";
+import { useOnBodyClick } from "./useOnBodyClick";
 
 export const Popover: React.FC<PopoverProps> = ({
   show,
@@ -10,6 +11,8 @@ export const Popover: React.FC<PopoverProps> = ({
   children,
   positions = ["bottom"],
   align,
+  offset,
+  onClose,
 }) => {
   const targetRef = useRef<HTMLElement>();
   const [contentRef, setContentRef] = useState<HTMLElement>();
@@ -18,13 +21,16 @@ export const Popover: React.FC<PopoverProps> = ({
     targetRef.current,
     contentRef,
     positions,
-    align
+    align,
+    offset
   );
 
   const renderTarget = () =>
     cloneElement(children, {
       ref: targetRef,
     });
+
+  useOnBodyClick(contentRef, onClose);
 
   const renderChild = () => {
     if (!show) {

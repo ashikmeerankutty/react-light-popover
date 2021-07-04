@@ -12,7 +12,8 @@ export const usePopover = (
   target: HTMLElement | undefined,
   content: HTMLElement | undefined,
   positions: PopoverPosition[],
-  align: PopoverAlign
+  align: PopoverAlign,
+  offset?: number
 ): { styles: PopoverState } => {
   const prevStyles = useRef({
     left: 0,
@@ -34,7 +35,8 @@ export const usePopover = (
           target,
           content,
           positions[positionIndex],
-          align
+          align,
+          offset
         );
         if (!isStylesEqual(updatedStyles, prevStyles.current)) {
           prevStyles.current = updatedStyles;

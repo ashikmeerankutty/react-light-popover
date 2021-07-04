@@ -25,7 +25,8 @@ const getPopoverRectForPosition = (
   target: HTMLElement,
   content: HTMLElement,
   position: string,
-  align: string
+  align: string,
+  offset: number
 ): Rect => {
   const {
     left: targetLeft,
@@ -46,7 +47,7 @@ const getPopoverRectForPosition = (
 
   switch (position) {
     case "top":
-      top = targetTop - height;
+      top = targetTop - height - offset;
       left = targetMidX - width / 2;
       if (align === "start") {
         left = targetLeft;
@@ -57,7 +58,7 @@ const getPopoverRectForPosition = (
       break;
     case "left":
       top = targetMidY - height / 2;
-      left = targetLeft - width;
+      left = targetLeft - width - offset;
       if (align === "start") {
         top = targetTop;
       }
@@ -66,7 +67,7 @@ const getPopoverRectForPosition = (
       }
       break;
     case "bottom":
-      top = targetBottom;
+      top = targetBottom + offset;
       left = targetMidX - width / 2;
       if (align === "start") {
         left = targetLeft;
@@ -77,7 +78,7 @@ const getPopoverRectForPosition = (
       break;
     case "right":
       top = targetMidY - height / 2;
-      left = targetRight;
+      left = targetRight + offset;
       if (align === "start") {
         top = targetTop;
       }
@@ -103,7 +104,8 @@ export const getPopoverRect = (
   targetElement: HTMLElement,
   contentElement: HTMLElement,
   position: PopoverPosition,
-  align: PopoverAlign
+  align: PopoverAlign,
+  offset = 0
 ): {
   violatesBoundary: boolean;
   rect: Rect;
@@ -112,7 +114,8 @@ export const getPopoverRect = (
     targetElement,
     contentElement,
     position,
-    align
+    align,
+    offset
   );
 
   const violatesBoundary = exceedsBoundary(document.body, rect, position);

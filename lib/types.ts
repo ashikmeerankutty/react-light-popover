@@ -18,6 +18,8 @@ export interface PopoverProps {
   children: ReactElement;
   positions: PopoverPosition[];
   align: PopoverAlign;
+  offset?: number;
+  onClose?: () => void;
 }
 
 export interface PortalProps {
