@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Popover, PopoverAlign, PopoverPosition } from "../lib";
+import "./styles.css";
 
 const App: React.FC = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -7,40 +8,23 @@ const App: React.FC = () => {
   const [align, setAlign] = useState<PopoverAlign>("center");
 
   return (
-    <div className="App">
-      <div
-        style={{
-          width: "100%",
-          height: "200px",
-          overflow: "scroll",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-          }}
+    <div className="app">
+      <div className="heading">React Light Popover</div>
+      <div className="popover__wrapper">
+        <Popover
+          show={show}
+          positions={[position, "bottom"]}
+          align={align}
+          offset={10}
+          content={<div className="content__styles">Hello</div>}
+          onClose={() => setShow(false)}
         >
-          <Popover
-            show={show}
-            positions={[position, "bottom"]}
-            align={align}
-            content={<div>Hello</div>}
-          >
-            <button type="button" onClick={() => setShow(!show)}>
-              Show popover
-            </button>
-          </Popover>
-        </div>
+          <button type="button" onClick={() => setShow(!show)}>
+            Show popover
+          </button>
+        </Popover>
       </div>
-      <div
-        style={{
-          position: "fixed",
-          bottom: "10px",
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className="data__button">
         <button type="button" onClick={() => setPosition("top")}>
           Top
         </button>
